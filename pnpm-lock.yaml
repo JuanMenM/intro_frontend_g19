@@ -4,11 +4,13 @@ specifiers:
   '@types/react': ^18.0.24
   '@types/react-dom': ^18.0.8
   '@vitejs/plugin-react': ^2.2.0
+  bootstrap: ^5.2.3
   react: ^18.2.0
   react-dom: ^18.2.0
   vite: ^3.2.3
 
 dependencies:
+  bootstrap: 5.2.3
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
 
@@ -389,6 +391,12 @@ packages:
     dependencies:
       color-convert: 1.9.3
     dev: true
+
+  /bootstrap/5.2.3:
+    resolution: {integrity: sha512-cEKPM+fwb3cT8NzQZYEu4HilJ3anCrWqh3CHAok1p9jXqMPsPTBhU25fBckEJHJ/p+tTxTFTsFQGM+gaHpi3QQ==}
+    peerDependencies:
+      '@popperjs/core': ^2.11.6
+    dev: false
 
   /browserslist/4.21.4:
     resolution: {integrity: sha512-CBHJJdDmgjl3daYjN5Cp5kbTf1mUhZoS+beLklHIvkOWscs83YAhLlF3Wsh/lciQYAcbBJgTOD44VtG31ZM4Hw==}
