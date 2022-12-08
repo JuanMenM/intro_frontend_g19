@@ -1,33 +1,51 @@
-import { useState } from 'react'
-import '../styles/App.css'
+import { useState, useEffect } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  console.log('montaje');
+  const [number, setNumber] = useState(1_000);
+  const [isView, setIsView] = useState(false);
+
+
+  // side effects
+  // useEffect
+
+  const sumar = () => {
+    // setNumber(9_000)
+    // console.log(2 + 2);
+  }
+
+  sumar()
+
+  /* ciclo de vida */
+  /* 
+  
+  montaje -> ejecuta jsx, luego ejecuta el código
+
+  actualización -> vuelve a montar el componente
+
+  desmontaje -> 1. desmonte , 2. ejecute un código
+  
+  */
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="./images/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src='./images/react.svg' className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="app text-white">
+      <h1 className="text-danger">Consumo de APIS</h1>
+      <h2>{number}</h2>
+      <button
+        className="d-block btn btn-primary"
+        onClick={() => setNumber(number + 1)}
+      >
+        Sumar
+      </button>
+      <button
+        className="d-block btn btn-info"
+        onClick={() => setIsView(!isView)}
+      >
+        Visible
+      </button>
+      {isView && <p>Visible</p>}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
