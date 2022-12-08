@@ -1,51 +1,50 @@
 import { useState, useEffect } from "react";
+import User from "./User";
 
-function App() {
-  console.log('montaje');
-  const [number, setNumber] = useState(1_000);
-  const [isView, setIsView] = useState(false);
+export default function App() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    /* promise */
+    window
+      .fetch("https://dummyjson.com/users")
+      .then((data) => data.json())
+      .then((data) => setUsers(data.users))
+      .catch((error) => console.log(error))
+      .finally(() => setLoading(false));
 
-  // side effects
-  // useEffect
+    /* async / await */
+    /* const getData = async () => {
+      try {
+        const request = await window.fetch("https://dummyjson.com/users");
+        const response = await request.json();
+        setUsers(response.users);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false)
+      }
+    };
 
-  const sumar = () => {
-    // setNumber(9_000)
-    // console.log(2 + 2);
-  }
-
-  sumar()
-
-  /* ciclo de vida */
-  /* 
-  
-  montaje -> ejecuta jsx, luego ejecuta el código
-
-  actualización -> vuelve a montar el componente
-
-  desmontaje -> 1. desmonte , 2. ejecute un código
-  
-  */
+    getData() */
+  }, []);
 
   return (
-    <div className="app text-white">
-      <h1 className="text-danger">Consumo de APIS</h1>
-      <h2>{number}</h2>
-      <button
-        className="d-block btn btn-primary"
-        onClick={() => setNumber(number + 1)}
-      >
-        Sumar
-      </button>
-      <button
-        className="d-block btn btn-info"
-        onClick={() => setIsView(!isView)}
-      >
-        Visible
-      </button>
-      {isView && <p>Visible</p>}
-    </div>
+    <section className="container text-white py-4">
+      <h1>App</h1>
+      {loading && <p>...loading</p>}
+      {!loading && (
+        <div className="row gy-4">
+          {users.length !== 0 &&
+            users.map((user) => (
+              <div key={user.id} className="col-12 col-sm-6 col-md-3">
+                <User {...user} />
+              </div>
+            ))}
+          {users.length === 0 && <p>No hay usuarios</p>}
+        </div>
+      )}
+    </section>
   );
 }
-
-export default App;
