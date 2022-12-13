@@ -10,7 +10,7 @@ export default function App() {
   return (
     <section className="container text-white py-4">
       <h1>App</h1>
-      {loading && <p>...loading</p>}
+      {loading && <p className="text-center">...loading</p>}
       {!loading && (
         <div className="row gy-4">
           {users.length !== 0 &&
