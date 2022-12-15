@@ -10,10 +10,10 @@ import './styles/index.css'
 const root = createRoot(document.getElementById('root'))
 
 root.render(
-  <StrictMode>
+  <>
     {/* exponer las rutas en mi aplicación */}
     <BrowserRouter>
       <Paths />
     </BrowserRouter>
-  </StrictMode>
+  </>
 )

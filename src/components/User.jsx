@@ -1,4 +1,4 @@
-export default function User({ username, image, email }) {
+function User({ username, image, email }) {
   return (
     <div className="card text-dark">
       <img className="card-img-top" src={image} alt={username} />
@@ -9,3 +9,5 @@ export default function User({ username, image, email }) {
     </div>
   );
 }
+
+export default User
