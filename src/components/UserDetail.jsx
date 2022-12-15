@@ -1,7 +1,11 @@
+import { useParams } from "react-router-dom";
 import { useGetData } from "../hooks/useGetData";
 
 export const UserDetail = () => {
-  const { data: user, loading } = useGetData("https://dummyjson.com/users/1");
+  const { idUser } = useParams();
+  const { data: user, loading } = useGetData(
+    `https://dummyjson.com/users/${idUser}`
+  );
 
   return (
     <section className="container">
