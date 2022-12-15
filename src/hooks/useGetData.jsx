@@ -16,5 +16,6 @@ export const useGetData = (url) => {
   return {
     data,
     loading,
+    setData
   };
 };
